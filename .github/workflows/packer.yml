@@ -23,14 +23,16 @@ jobs:
         uses: hashicorp/packer-github-actions@master
         with:
           command: fix
-
+          target: "*.json"
+          
       # validate templates
       - name: Validate Template
         uses: hashicorp/packer-github-actions@master
         with:
           command: validate
           arguments: -syntax-only
-          target: packer.pkr.hcl
+          #target: packer.pkr.hcl
+          target: "*.json"
 
       # build artifact
       - name: Build Artifact
@@ -38,7 +40,8 @@ jobs:
         with:
           command: build
           arguments: "-color=false -on-error=abort"
-          target: packer.pkr.hcl
+          #target: packer.pkr.hcl
+          target: "*.json"
         env:
           PACKER_LOG: 1
 
