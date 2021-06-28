@@ -19,8 +19,8 @@ jobs:
         os: [macos-latest, ubuntu-latest, ubuntu-18.04]
         experimental: [false]
         include:
-          os: ubuntu-last
-          experimental: true
+          - os: ubuntu-last
+            experimental: true
 
     steps:
       - name: Checkout Repository
