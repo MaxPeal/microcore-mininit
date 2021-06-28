@@ -11,8 +11,16 @@ on:
 
 jobs:
   packer:
-    runs-on: ubuntu-latest
-    name: packer
+    runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ matrix.experimental }}
+    strategy:
+  fail-fast: false
+  matrix:
+    os: [macos-latest, ubuntu-latest, ubuntu-18.04]
+    experimental: [false]
+    include:
+        os: ubuntu-last
+        experimental: true
 
     steps:
       - name: Checkout Repository
