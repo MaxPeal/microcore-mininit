@@ -21,7 +21,7 @@ jobs:
       - name: Install qemu-system
         run: |
           sudo apt-get update
-          sudo apt-get install jq qemu-system
+          sudo apt-get install jq qemu-system qemu qemu-kvm qemu-system-data qemu-system-misc qemu-system-x86-64 qemu-system-x86 qemu-system-i386
 
       # fix backwards incompatibilities in template
       - name: Fix Template
