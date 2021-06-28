@@ -23,6 +23,13 @@ jobs:
             experimental: true
 
     steps:
+      -
+        name: Runner info
+        run: |
+          sudo apt-get install -y hwinfo
+          sudo hwinfo --short
+          sudo mount
+
       - name: Checkout Repository
         uses: actions/checkout@v2
 
