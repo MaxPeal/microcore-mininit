@@ -14,13 +14,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.experimental }}
     strategy:
-  fail-fast: false
-  matrix:
-    os: [macos-latest, ubuntu-latest, ubuntu-18.04]
-    experimental: [false]
-    include:
-        os: ubuntu-last
-        experimental: true
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest, ubuntu-18.04]
+        experimental: [false]
+        include:
+          os: ubuntu-last
+          experimental: true
 
     steps:
       - name: Checkout Repository
