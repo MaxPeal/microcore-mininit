@@ -19,7 +19,7 @@ jobs:
         os: [macos-latest, ubuntu-latest, ubuntu-18.04]
         experimental: [false]
         include:
-          - os: ubuntu-last
+          - os: ubuntu-latest
             experimental: true
 
     steps:
