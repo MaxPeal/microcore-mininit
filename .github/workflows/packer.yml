@@ -44,6 +44,7 @@ jobs:
       - name: fix qemu-system-x86_64 link
         continue-on-error: true
         run: |
+          echo $PATH
           hash qemu-kvm ||:
           hash qemu-system-x86_64 ||:
           hash qemu-system-i386 ||:
@@ -57,6 +58,7 @@ jobs:
           sudo ln -s -v /usr/bin/qemu* /bin ||:
           #ls -la /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.local/bin
           #find / -xdev -type f -name "qemu*" -ls ||:
+          echo $PATH
           find ${PATH//:/\/ } -type f -name "qemu*" -ls
 
       # fix backwards incompatibilities in template
