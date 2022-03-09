@@ -39,6 +39,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: post Checkout / Runner info / find . -ls
+        if: runner.os == 'Linux'
+        run: |
+          find . -type f -name "*" -ls
+
       - name: Install qemu-system
         if: runner.os == 'Linux'
         run: |
