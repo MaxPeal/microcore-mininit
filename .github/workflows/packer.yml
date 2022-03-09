@@ -48,13 +48,14 @@ jobs:
           hash qemu-system-x86_64 ||:
           hash qemu-system-i386 ||:
           hash ||:
-          ln -s /usr/libexec/qemu-kvm /usr/local/bin/qemu-system-x86_64 ||:
-          ln -s /usr/bin/qemu-system-x86_64 /usr/local/bin/qemu-system-x86_64 ||:
-          cd /usr && ln -s /usr/bin/qemu* . ||:
-          cd /usr && ln -s /usr/local/bin/qemu* . ||:
+          ln -s --verbose /usr/libexec/qemu-kvm /usr/local/bin/qemu-system-x86_64 ||:
+          ln -s --verbose /usr/bin/qemu-system-x86_64 /usr/local/bin/qemu-system-x86_64 ||:
+          cd /usr && sudo ln -s --verbose /usr/bin/qemu* . ||:
+          cd /usr && sudo ln -s --verbose /usr/local/bin/qemu* . ||:
 
       # fix backwards incompatibilities in template
       - name: Fix Template
+        if: runner.os == 'Linux'
         uses: hashicorp/packer-github-actions@master
         with:
           command: fix
@@ -62,6 +63,7 @@ jobs:
           
       # validate templates
       - name: Validate Template
+        if: runner.os == 'Linux'
         uses: hashicorp/packer-github-actions@master
         with:
           command: validate
