@@ -44,12 +44,12 @@ jobs:
       - name: fix qemu-system-x86_64 link
         continue-on-error: true
         run: |
-          hash qemu-kvm
-          hash qemu-system-x86_64
-          hash qemu-system-i386
-          hash
-          ln -s /usr/libexec/qemu-kvm /usr/local/bin/qemu-system-x86_64
-          ||:
+          hash qemu-kvm ||:
+          hash qemu-system-x86_64 ||:
+          hash qemu-system-i386 ||:
+          hash ||:
+          ln -s /usr/libexec/qemu-kvm /usr/local/bin/qemu-system-x86_64 ||:
+          ln -s /usr/bin/qemu-system-x86_64 /usr/local/bin/qemu-system-x86_64 ||:
 
       # fix backwards incompatibilities in template
       - name: Fix Template
