@@ -96,7 +96,8 @@ jobs:
         run: |
           cd ${GITHUB_WORKSPACE} || find . -type f -name "*" -ls
           export PACKER_LOG=1
-          packer build -debug -parallel-builds=1 -color=false -on-error=abort "*.json"
+          #packer build -debug -parallel-builds=1 -color=false -on-error=abort "*.json"
+          packer build -parallel-builds=1 -color=false -on-error=abort ./ || packer build -parallel-builds=1 -color=false -on-error=abort *.json
           #target: packer.pkr.hcl
 
       # build artifact
