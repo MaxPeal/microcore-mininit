@@ -42,6 +42,7 @@ jobs:
                                     
       # https://github.com/hashicorp/packer/issues/10892
       - name: fix qemu-system-x86_64 link
+        continue-on-error: true
         run: |
           hash qemu-kvm
           hash qemu-system-x86_64
