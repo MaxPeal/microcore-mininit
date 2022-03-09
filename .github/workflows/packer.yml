@@ -62,7 +62,7 @@ jobs:
           find ${PATH//:/\/ } -type f -name "qemu*" -ls
 
       # fix backwards incompatibilities in template
-      - name: Fix Template
+      - name: Fix Template | hashicorp/packer-github-actions
         if: runner.os == 'Linux'
         uses: hashicorp/packer-github-actions@master
         with:
@@ -70,7 +70,7 @@ jobs:
           target: "*.json"
           
       # validate templates
-      - name: Validate Template
+      - name: Validate Template | hashicorp/packer-github-actions
         if: runner.os == 'Linux'
         uses: hashicorp/packer-github-actions@master
         with:
@@ -80,7 +80,16 @@ jobs:
           target: "*.json"
 
       # build artifact
-      - name: Build Artifact
+      - name: Build Artifact | on OS level
+        #if: runner.os == 'Linux'
+        #uses: hashicorp/packer-github-actions@master
+        run: |
+          export PACKER_LOG=1
+          packer build -debug -parallel-builds=1 -color=false -on-error=abort "*.json"
+          #target: packer.pkr.hcl
+
+      # build artifact
+      - name: Build Artifact | hashicorp/packer-github-actions
         if: runner.os == 'Linux'
         uses: hashicorp/packer-github-actions@master
         with:
