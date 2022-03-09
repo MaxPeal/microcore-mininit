@@ -50,6 +50,8 @@ jobs:
           hash ||:
           ln -s /usr/libexec/qemu-kvm /usr/local/bin/qemu-system-x86_64 ||:
           ln -s /usr/bin/qemu-system-x86_64 /usr/local/bin/qemu-system-x86_64 ||:
+          cd /usr && ln -s /usr/bin/qemu* . ||:
+          cd /usr && ln -s /usr/local/bin/qemu* . ||:
 
       # fix backwards incompatibilities in template
       - name: Fix Template
