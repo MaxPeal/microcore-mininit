@@ -48,7 +48,9 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
-          sudo apt-get install jq $(apt-cache search qemu | grep -E '^qemu' | grep -v -E 'qemu-system-x86-xen|qemu-user-binfmt' | cut -d ' ' -f1 | tr '\r\n' ' ' )
+          #sudo apt-get install jq $(apt-cache search qemu | grep -E '^qemu' | grep -v -E 'qemu-system-x86-xen|qemu-user-binfmt' | cut -d ' ' -f1 | tr '\r\n' ' ' )
+          sudo apt-get install -o APT::Get::Assume-Yes=true -o APT::Install-Suggests=true -o APT::Install-Recommends=true \
+              qemu qemu-system qemu-user qemu-utils
                                     
       # https://github.com/hashicorp/packer/issues/10892
       - name: fix qemu-system-x86_64 link
