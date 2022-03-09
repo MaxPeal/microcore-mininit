@@ -36,8 +36,8 @@ jobs:
       - name: Install qemu-system
         run: |
           sudo apt-get update
-          sudo apt-get install jq $(apt-cache search qemu | grep -E '^qemu' | grep -v -E 'qemu-system-x86-qemu-user-binfmtnfmt' | cut -d ' ' -f1 | tr '\r\n' ' ' )
-
+          sudo apt-get install jq $(apt-cache search qemu | grep -E '^qemu' | grep -v -E 'qemu-system-x86-xen|qemu-user-binfmt' | cut -d ' ' -f1 | tr '\r\n' ' ' )
+                                    
       # https://github.com/hashicorp/packer/issues/10892
       - name: fix qemu-system-x86_64 link
         run: |
