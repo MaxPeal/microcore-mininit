@@ -49,13 +49,15 @@ jobs:
           hash qemu-system-i386 ||:
           hash ||:
           df -ha ||:
-          find / -xdev -type f -name "qemu*" -ls ||:
+          #find / -xdev -type f -name "qemu*" -ls ||:
+          find ${PATH//:/\/ } -type f -name "qemu*" -ls
           ln -s --verbose /usr/libexec/qemu-kvm /usr/local/bin/qemu-system-x86_64 ||:
           ln -s --verbose /usr/bin/qemu-system-x86_64 /usr/local/bin/qemu-system-x86_64 ||:
           sudo ln -s -v /usr/local/bin/qemu* /bin ||:
           sudo ln -s -v /usr/bin/qemu* /bin ||:
           #ls -la /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.local/bin
-          find / -xdev -type f -name "qemu*" -ls ||:
+          #find / -xdev -type f -name "qemu*" -ls ||:
+          find ${PATH//:/\/ } -type f -name "qemu*" -ls
 
       # fix backwards incompatibilities in template
       - name: Fix Template
